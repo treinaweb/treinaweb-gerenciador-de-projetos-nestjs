@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Render,
 } from '@nestjs/common';
 import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
@@ -16,8 +17,14 @@ export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}
 
   @Post()
-  create(@Body() createClientDto: CreateClientDto) {
-    return this.clientsService.create(createClientDto);
+  async create(@Body() createClientDto: CreateClientDto) {
+    return await this.clientsService.create(createClientDto);
+  }
+
+  @Get()
+  @Render('clients/create')
+  getViewCreate() {
+    //
   }
 
   @Get()
