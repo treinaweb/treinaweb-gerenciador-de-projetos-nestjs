@@ -1,29 +1,45 @@
-import { Project } from 'src/projects/entities/project.entity';
+import { Employee } from 'src/employees/entities/employee.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
-export class Client {
+export class Address {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column({ nullable: false })
-  nome: string;
+  logradouro: string;
 
   @Column({ nullable: false })
-  endereco: string;
+  numero: string;
 
   @Column({ nullable: true })
-  observacao?: string;
+  complemento?: string;
 
-  @OneToMany(() => Project, (project) => project.client, { cascade: true })
-  projects: Project[];
+  @Column({ nullable: false })
+  bairro: string;
+
+  @Column({ nullable: false })
+  cidade: string;
+
+  @Column({ nullable: false })
+  cep: string;
+
+  @Column({ nullable: false })
+  estado: string;
+
+  @OneToOne(() => Employee, (employee) => employee.address, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'employee_id' })
+  employee: Employee;
 
   @CreateDateColumn({
     type: 'timestamp',
