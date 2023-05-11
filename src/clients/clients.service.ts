@@ -16,8 +16,8 @@ export class ClientsService {
     return await this.repository.save(client);
   }
 
-  findAll() {
-    return `This action returns all clients`;
+  async findAll() {
+    return await this.repository.find();
   }
 
   findOne(id: number) {
