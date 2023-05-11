@@ -30,7 +30,7 @@ export class ClientsService {
     return await this.repository.update(id, client);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} client`;
+  async remove(id: number) {
+    return await this.repository.delete({ id: id });
   }
 }

@@ -15,7 +15,7 @@
       <td>{{this.nome}}</td>
       <td>{{this.endereco}}</td>
       <td><a class="btn btn-primary" href="/clients/{{this.id}}/edit">Atualizar</a>
-      <form action="#" method="POST" style="display: inline;">
+      <form action="/clients/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
         <button class="btn btn-danger" type="submit" onclick="return confirm('Tem certeza que deseja apagar o registro?')">Excluir</button>
       </form></td>
     </tr>
