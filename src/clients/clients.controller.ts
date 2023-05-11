@@ -45,8 +45,9 @@ export class ClientsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientsService.findOne(+id);
+  @Render('clients/show')
+  async findOne(@Param('id') id: string) {
+    return { client: await this.clientsService.findOne(+id) };
   }
 
   @Get(':id/edit')

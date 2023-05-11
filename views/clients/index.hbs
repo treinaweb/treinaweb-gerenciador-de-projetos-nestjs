@@ -12,7 +12,7 @@
     {{#each clients}}
     <tr>
       <th scope="row">{{this.id}}</th>
-      <td>{{this.nome}}</td>
+      <td><a href="/clients/{{this.id}}">{{this.nome}}</a></td>
       <td>{{this.endereco}}</td>
       <td><a class="btn btn-primary" href="/clients/{{this.id}}/edit">Atualizar</a>
       <form action="/clients/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
