@@ -40,9 +40,19 @@ export class ClientsController {
     return this.clientsService.findOne(+id);
   }
 
+  @Get(':id/edit')
+  @Render('clients/edit')
+  async getViewEdit(@Param('id') id: string) {
+    return { client: await this.clientsService.findOne(+id) };
+  }
+
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(+id, updateClientDto);
+  @Redirect('/clients')
+  async update(
+    @Param('id') id: string,
+    @Body() updateClientDto: UpdateClientDto,
+  ) {
+    return await this.clientsService.update(+id, updateClientDto);
   }
 
   @Delete(':id')

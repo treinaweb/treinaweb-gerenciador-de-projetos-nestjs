@@ -20,12 +20,14 @@ export class ClientsService {
     return await this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} client`;
+  async findOne(id: number) {
+    return await this.repository.findOneBy({ id: id });
   }
 
-  update(id: number, updateClientDto: UpdateClientDto) {
-    return `This action updates a #${id} client`;
+  async update(id: number, updateClientDto: UpdateClientDto) {
+    const { nome, endereco, observacao } = updateClientDto;
+    const client = this.repository.create({ nome, endereco, observacao });
+    return await this.repository.update(id, client);
   }
 
   remove(id: number) {
