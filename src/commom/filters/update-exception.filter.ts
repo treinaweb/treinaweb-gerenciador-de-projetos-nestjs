@@ -20,6 +20,7 @@ export class UpdateException implements ExceptionFilter {
       request.flash('message', exception.getResponse()['message']);
       request.flash('alert', 'alert alert-danger');
       request.flash('oldData', oldData);
+      console.log(url);
       response.redirect(`${url}/edit`);
     } else {
       response.redirect(`${url}/index`);

@@ -1,0 +1,37 @@
+<div class="mb-3">
+    <label for="nome" class="form-label">Nome:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.nome}}{{^}}{{employee.nome}}{{/if}}" class="form-control" id="nome" name="nome" placeholder="Digite o nome">
+  </div>
+  <div class="mb-3">
+    <label for="nome" class="form-label">CPF:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.cpf}}{{^}}{{employee.cpf}}{{/if}}" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF">
+  </div>
+  <div class="mb-3">
+    <label for="nome" class="form-label">Data Contratação:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.dataContratacao}}{{^}}{{employee.dataContratacao}}{{/if}}" class="form-control" id="dataContratacao" name="dataContratacao" placeholder="Data de Contratação">
+  </div>
+   <div class="mb-3">
+    <label for="nome" class="form-label">Logradouro:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.logradouro}}{{^}}{{employee.address.logradouro}}{{/if}}" class="form-control" id="logradouro" name="logradouro" placeholder="Logradouro">
+  </div>
+     <div class="mb-3">
+    <label for="nome" class="form-label">Número:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.numero}}{{^}}{{employee.address.numero}}{{/if}}" class="form-control" id="numero" name="numero" placeholder="Número">
+  </div>
+     <div class="mb-3">
+    <label for="nome" class="form-label">Bairro:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.bairro}}{{^}}{{employee.address.bairro}}{{/if}}" class="form-control" id="bairro" name="bairro" placeholder="Nome do bairro">
+  </div>
+     <div class="mb-3">
+    <label for="nome" class="form-label">CEP:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.cep}}{{^}}{{employee.address.cep}}{{/if}}" class="form-control" id="cep" name="cep" placeholder="Digite o CEP">
+  </div>
+    <div class="mb-3">
+    <label for="nome" class="form-label">Cidade:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.cidade}}{{^}}{{employee.address.cidade}}{{/if}}" class="form-control" id="cidade" name="cidade" placeholder="Digite o Estado">
+  </div>
+  <div class="mb-3">
+    <label for="nome" class="form-label">Estado:</label>
+    <input type="text" value="{{#if message}}{{oldData.0.estado}}{{^}}{{employee.address.estado}}{{/if}}" class="form-control" id="estado" name="estado" placeholder="Digite o Estado">
+  </div>
+

@@ -1,0 +1,10 @@
+<h1>Editar Funcionário</h1>
+<div class="{{alert}}">
+  {{#each message}}
+    <p style="line-height: 5px;">{{this}}</p>
+  {{/each}}
+</div>
+<form action="/employees/{{employee.id}}?_method=PATCH" method="POST">
+  {{> form-employee}}
+    <button class="btn btn-success" type="submit">Atualizar</button>
+</form>

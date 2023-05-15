@@ -1,0 +1,29 @@
+<div class="card mt-3">
+  <h5 class="card-header">Detalhes do Funcionário {{ employee.nome }}</h5>
+  <div class="card-body">
+    <p><strong>ID: </strong>{{ employee.id }}</p>
+    <p><strong>Nome: </strong>{{ employee.nome }}</p>
+    <p><strong>CPF: </strong>{{ employee.cpf }}</p>
+    <p><strong>Data de Contratação: </strong>{{ employee.dataContratacao }}</p>
+    <p><strong>Situação: </strong>{{ employee.dataDemissao }}
+      {{#unless employee.dataDemissao}}
+      ATIVO
+      <a href="/employees/{{employee.id}}/inativar" class="btn btn-danger">Inativar Funcionário</a>
+    </p>
+    {{/unless}}
+  </div>
+</div>
+<div class="card mt-3">
+  <h5 class="card-header">Endereço do Funcionário</h5>
+  <div class="card-body">
+    <p><strong>Logradouro: </strong>{{ employee.address.logradouro }}</p>
+    <p><strong>Número: </strong>{{ employee.address.numero }}</p>
+    <p><strong>Complemento: </strong>{{ employee.address.complemento }}</p>
+    <p><strong>CEP: </strong>{{ employee.address.cep }}
+    <p><strong>Bairro: </strong>{{ employee.address.bairro }}</p>
+    <p><strong>Cidade: </strong>{{ employee.address.cidade }}
+    <p><strong>Estado: </strong>{{ employee.address.estado }}
+    <br>
+    <a class="btn btn-success" href="/employees">Voltar para a lista</a>
+  </div>
+</div>
