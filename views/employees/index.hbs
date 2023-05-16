@@ -14,7 +14,7 @@
     <tr>
       <th scope="row">{{this.id}}</th>
       <td><a href="/employees/{{this.id}}">{{this.nome}}</a></td>
-      <td>{{this.dataContratacao}}</td>
+      <td>{{#converterData this.dataContratacao}}{{/converterData}}</td>
       <td>{{#if this.dataDemissao}}Inativo{{else}}Ativo{{/if}}</td>
       <td><a class="btn btn-primary" href="/employees/{{this.id}}/edit">Atualizar</a>
       <form action="/employees/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">

@@ -20,6 +20,14 @@ async function bootstrap() {
       extname: 'hbs',
       defaultLayout: 'main',
       partialsDir: 'views/partials',
+      helpers: {
+        converterData: (data: Date) => {
+          const dataFormatadaBr = new Date(data);
+          return data === undefined
+            ? ''
+            : `${dataFormatadaBr.toLocaleString('pt-BR').split(',')[0]}`;
+        },
+      },
     }),
   );
   app.use(

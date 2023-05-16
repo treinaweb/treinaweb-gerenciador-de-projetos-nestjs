@@ -1,4 +1,11 @@
-import { IsDateString, IsNotEmpty, IsString, Length } from 'class-validator';
+import {
+  IsDate,
+  IsDateString,
+  IsNotEmpty,
+  IsString,
+  Length,
+  Matches,
+} from 'class-validator';
 
 export class CreateEmployeeDto {
   @IsNotEmpty({ message: 'Nome não pode ser vazio.' })
@@ -10,12 +17,11 @@ export class CreateEmployeeDto {
   @Length(11, 11, { message: 'O CPF deve ter exatamente 11 caracteres.' })
   cpf: string;
 
-  @IsDateString(
-    { strict: true },
-    { message: 'A data deve ter o padrão ISO yyyy-mm-dd.' },
-  )
-  @IsNotEmpty()
-  dataContratacao: Date;
+  @Matches(/^\d{2}\/\d{2}\/\d{4}$/, {
+    message: 'Data Inválida - Deve ser no padrão DD/MM/AAAA',
+  })
+  @IsNotEmpty({ message: 'Data não pode ser vazio.' })
+  dataContratacao: string;
 
   @IsNotEmpty({ message: 'Logradouro não pode ser vazio.' })
   @Length(3, 100, { message: 'Logradouro deve ter de 3 até 00 caracteres.' })

@@ -1,0 +1,10 @@
+<h1>Novo Projeto</h1>
+<div class="{{alert}}">
+  {{#each message}}
+    <p style="line-height: 5px;">{{this}}</p>
+  {{/each}}
+</div>
+<form action="/projects" method="POST">
+  {{> form-project}}
+    <button class="btn btn-success" type="submit">Cadastrar</button>
+</form>

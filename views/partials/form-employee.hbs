@@ -8,7 +8,7 @@
   </div>
   <div class="mb-3">
     <label for="nome" class="form-label">Data Contratação:</label>
-    <input type="text" value="{{#if message}}{{oldData.0.dataContratacao}}{{^}}{{employee.dataContratacao}}{{/if}}" class="form-control" id="dataContratacao" name="dataContratacao" placeholder="Data de Contratação">
+    <input type="text" value="{{#if message}}{{#converterData oldData.0.dataContratacao}}{{/converterData}}{{^}}{{#converterData employee.dataContratacao}}{{/converterData}}{{/if}}" class="form-control" id="dataContratacao" name="dataContratacao" placeholder="Data de Contratação">
   </div>
    <div class="mb-3">
     <label for="nome" class="form-label">Logradouro:</label>

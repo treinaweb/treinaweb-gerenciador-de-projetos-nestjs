@@ -4,13 +4,15 @@
     <p><strong>ID: </strong>{{ employee.id }}</p>
     <p><strong>Nome: </strong>{{ employee.nome }}</p>
     <p><strong>CPF: </strong>{{ employee.cpf }}</p>
-    <p><strong>Data de Contratação: </strong>{{ employee.dataContratacao }}</p>
-    <p><strong>Situação: </strong>{{ employee.dataDemissao }}
-      {{#unless employee.dataDemissao}}
+    <p><strong>Data de Contratação: </strong>{{#converterData employee.dataContratacao }}{{/converterData}}</p>
+    <p><strong>Situação: </strong>
+      {{#if employee.dataDemissao}}
+      {{#converterData employee.dataDemissao }}{{/converterData}} (Inativo)
+      {{else}}
       ATIVO
       <a href="/employees/{{employee.id}}/inativar" class="btn btn-danger">Inativar Funcionário</a>
     </p>
-    {{/unless}}
+    {{/if}}
   </div>
 </div>
 <div class="card mt-3">

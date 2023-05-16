@@ -1,0 +1,25 @@
+<h1>Lista de Projetos</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each projects}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <td><a href="/projects/{{this.id}}">{{this.nome}}</a></td>
+      <td>{{this.client.nome}}</td>
+      <td><a class="btn btn-primary" href="/projects/{{this.id}}/edit">Atualizar</a>
+      <form action="/projects/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
+        <button class="btn btn-danger" type="submit" onclick="return confirm('Tem certeza que deseja apagar o registro?')">Excluir</button>
+      </form></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<a class="btn btn-success" href="/projects/create">Novo Projeto</a>

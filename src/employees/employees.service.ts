@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Employee } from './entities/employee.entity';
 import { Repository } from 'typeorm';
 import { Address } from 'src/addresses/entities/address.entity';
+import { Utils } from 'src/utils/utils';
 
 @Injectable()
 export class EmployeesService {
@@ -13,13 +14,15 @@ export class EmployeesService {
     private employeeRepository: Repository<Employee>,
     @InjectRepository(Address)
     private addressRepository: Repository<Address>,
+    private utils: Utils,
   ) {}
   async create(createEmployeeDto: CreateEmployeeDto) {
     const { nome, cpf, dataContratacao } = createEmployeeDto;
+    const newDate = this.utils.converterParaDataISO(dataContratacao);
     const employee = this.employeeRepository.create({
       nome,
       cpf,
-      dataContratacao,
+      dataContratacao: new Date(newDate),
     });
     const newEmployee = await this.employeeRepository.save(employee);
 
@@ -52,12 +55,21 @@ export class EmployeesService {
     });
   }
 
+  async find(id: number[]) {
+    return await this.employeeRepository
+      .createQueryBuilder('employee')
+      .select('employee')
+      .where('employee.id IN(:id)', { id: id })
+      .getMany();
+  }
+
   async update(id: number, updateEmployeeDto: UpdateEmployeeDto) {
     const { nome, cpf, dataContratacao } = updateEmployeeDto;
+    const newDate = this.utils.converterParaDataISO(dataContratacao);
     const employee = this.employeeRepository.create({
       nome,
       cpf,
-      dataContratacao,
+      dataContratacao: new Date(dataContratacao),
     });
     await this.employeeRepository.update(id, employee);
     const newEmployee = await this.findOne(id);

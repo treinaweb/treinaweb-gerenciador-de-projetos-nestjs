@@ -1,0 +1,50 @@
+<div class="row mb-2">
+  <div class="col-md-4">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome:</label>
+      <input type="text" value="{{#if message}}{{oldData.0.nome}}{{^}}{{project.nome}}{{/if}}" class="form-control"
+        id="nome" name="nome" placeholder="Digite o nome">
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Orçamento:</label>
+      <input type="text" value="{{#if message}}{{oldData.0.orcamento}}{{^}}{{project.orcamento}}{{/if}}" class="form-control"
+        id="orcamento" name="orcamento" data-mask="#.##0,00" data-mask-reverse="true" placeholder="Digite o orçamento do projeto">
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Cliente</label>
+      <select type="text" id="client" name="client" class="form-control">
+        <option>Selecione o cliente do projeto</option>
+        {{#each clients}}
+        <option value="{{this.id}}">{{this.nome}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-md-4">
+    <label for="nome" class="form-label">Data Início:</label>
+    <input type="text" value="{{#if message}}{{#converterData oldData.0.dataInicio}}{{/converterData}}{{^}}{{#converterData project.dataInicio}}{{/converterData}}{{/if}}" class="form-control"
+      id="dataInicio" name="dataInicio" placeholder="Data início do projeto">
+  </div>
+  <div class="col-md-4">
+    <label for="nome" class="form-label">Data Final:</label>
+    <input type="text" value="{{#if message}}{{#converterData oldData.0.dataFinal}}{{/converterData}}{{^}}{{#converterData project.dataFinal}}{{/converterData}}{{/if}}" class="form-control"
+      id="dataFinal" name="dataFinal" placeholder="Data final do projeto">
+  </div>
+  <div class="col-md-4">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Funcionários alocados</label>
+      <select type="text" id="employeesId" name="employeesId[]" multiple class="form-control">
+        {{#each employees}}
+        <option value="{{this.id}}">{{this.nome}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>
